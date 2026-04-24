@@ -73,7 +73,6 @@ const app = createApp({
             window.location.href = 'login.html';
         },
 
-        // --- ДОПОМІЖНІ МЕТОДИ ---
         editContact(contact) {
             this.newContact = { ...contact };
             const modalEl = document.getElementById('addContactModal');
@@ -120,7 +119,6 @@ const app = createApp({
         }
     },
     mounted() {
-        // Завантажуємо контакти тільки якщо ми на сторінці зі списком і залогінені
         if (this.isLogged) {
             this.fetchContacts();
         }
