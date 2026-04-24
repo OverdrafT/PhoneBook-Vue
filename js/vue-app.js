@@ -82,7 +82,7 @@ const app = createApp({
         },
 
         async deleteContact(id) {
-            if (!confirm("Видалити?")) return;
+            if (!confirm("Are you sure?")) return;
             try {
                 await axios.delete(`http://localhost:3000/api/contacts/${id}`);
                 this.contacts = this.contacts.filter(c => c.id !== id);
