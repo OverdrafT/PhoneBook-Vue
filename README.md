@@ -47,23 +47,25 @@ The repository has been optimized to separate client-side and server-side logic:
 ---
 
 ## Navigation Flow
-The application follows a logical user journey:
-1. **Initial State:** On first load, the Model populates the list with default IT-industry contacts.
-2. **Contact Management:** Clicking "Add Contact" opens a modal.
-* The View handles form validation before passing data to the Controller.
-* The Model performs a "Type-Casting" check (ID Numbering) to decide whether to Update or Insert a record.
-3. **Synchronization:** Every data change triggers an automatic re-render of the View and updates the LocalStorage.
+1. **Startup:** The backend initializes the SQLite database and creates users and contacts tables.
+2. **Client Interaction:** On load, Vue checks localStorage for an active session (isLogged).
+  * If authorized, Vue triggers axios.get('/api/contacts') to populate the list.
+3. **Data Handling:** All form submissions trigger asynchronous requests to the Express server, which performs SQL queries to update the database.
+4. **State Management:** Upon a successful API response, Vue's reactivity system automatically updates the DOM without a page reload.
 ---
 
 ## How to Run
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/shche/PhoneBook.git
-2. **Open the project:**
-   Simply open index.html via Live Server in VS Code or any modern browser.
-
-3. **Live Demo:**
-   Alternatively, visit the live demo via [GitHub Pages](https://overdraft.github.io/PhoneBook-JS/index.html).
+2. **Install Dependencies::**
+   ```bash
+   npm install
+3. **Start the Server:**
+   ```bash
+   node server.js
+4. **Open the App:**
+  Open index.html via Live Server (VS Code) or simply open the file in your browser while the server is running.
 
    ---
 
