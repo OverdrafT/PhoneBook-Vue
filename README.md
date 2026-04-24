@@ -1,4 +1,4 @@
-# Laboratory Work #2: PhoneBook Web Application
+# Laboratory Work #3: PhoneBook Web Application
 
 ### Developer Information
 * **Name:** Shcherbatiuk Yevhen
@@ -9,43 +9,40 @@
 ---
 
 ## Project Overview
-This project is a dynamic web application for contact management, built using the Model-View-Controller (MVC) architectural pattern. Unlike static prototypes, this version features a fully functional CRUD (Create, Read, Update, Delete) system with persistent data storage.
+This project is a modern Full-stack web application for contact management. In this version (Laboratory Work #3), the application has been migrated from a manual MVC pattern to the Vue.js framework on the frontend and a Node.js (Express) backend with SQLite for persistent data storage.
 ### Key Features:
-* **MVC Architecture:** Strict separation of concerns between data (Model), UI (View), and logic (Controller).
-* **Persistent Storage:** Data is saved in the browser's LocalStorage, ensuring contacts remain after page reloads.
-* **Full CRUD Operations:** Support for adding new contacts, editing existing ones, and deleting entries with smooth animations.
-* **Smart UI/UX:**
-* Dynamic Avatars: Initial-based avatars with unique colors generated via HSL hashing of contact names.
-* Alphabetical Grouping: Automatic sorting and grouping of contacts by the first letter.
-* Smooth Animations: Integrated CSS transitions for row removal (fade-out effect).
-* **Advanced Form Validation:** Complex validation using Regular Expressions (Regex) and Bootstrap's Constraint Validation API on both Contact and Registration forms.
-* **Responsive & Sticky UI:** Adaptive layout with a Sticky Navbar for better navigation in long lists.
+* **Reactive Frontend:** Powered by Vue.js 3, providing instant UI updates and seamless data binding.
+* **RESTful API Backend:** A Node.js server built with Express.js handles all data requests.
+* **Persistent Database:** Contacts and user information are stored in a relational SQLite database (phonebook.db).
+* **Full CRUD Lifecycle:**
+   * Create: Add new contacts via a reactive modal form.
+   * Read: Fetch and display contacts asynchronously using Axios.
+   * Update: Edit existing entries with real-time feedback.
+   *  Delete: Remove contacts with instant state synchronization.
+
+* **Authentication Logic:** Session management using localStorage to handle Login/Logout states and conditional UI rendering.
+* **Responsive Design:** Mobile-first approach using Bootstrap 5.3 and custom Flexbox layouts (including a Sticky Footer).
 
 ---
 
 ## Technologies Used
-* **JavaScript(ES6+):** Classes for MVC implementation, Event Delegation and Hashing algorithms.
-* **HTML5:** Semantic structure of the web pages.
-* **CSS3:** Custom styles for avatars, layout adjustments, and UI enhancements.
-* **Bootstrap 5.3:** Main framework for grid system, components (cards, tables), and responsiveness.
-* **Bootstrap Icons:** Font-based icons for UI elements and branding.
+* **Frontend:** Vue.js 3 (Options API), Axios, Bootstrap 5.3, Bootstrap Icons.
+* **Backend:** Node.js, Express.js, CORS, Body-Parser.
+* **Database:** SQLite3 (Relational storage).
+* **Styling:** Custom CSS3 with Media Queries for advanced mobile adaptation.
 
 ---
 
 ## Project Structure
-The repository contains the following files:
-* `index.html` — The main dashboard with the contact list.
-* `register.html` — User registration form.
-* `login.html` — User authentication form.
-* `profile.html` — User's personal information page.
-* `about.html` — Information about the project and developer.
-* `privacy.html` — Data handling policy (academic notice).
-* `style.css` — Centralized custom stylesheet.
-* `favicon.ico` / `myicon.png` — Website icon.
-* `js/model.js` - Business logic and LocalStorage handling.
-* `js/view.js` - DOM manipulation, Event binding and Animations.
-* `js/controller.js` - Event handling and MVC coordination.
-* `js/app.js` - Entry point for initializing the application.
+The repository has been optimized to separate client-side and server-side logic:
+* `index.html` — Main dashboard (Contacts list).
+* `login.html` / `register.html` — Authentication pages powered by Vue.
+* `profile.html` — User profile page with dynamic data binding.
+* `server.js` — The Express.js backend and API routing.
+* `phonebook.db` — SQLite database file.
+* `js/vue-app.js` — The centralized Vue.js logic (The "Brain" of the frontend).
+* `css/style.css` — Custom styles, including sticky footer and mobile card-view for tables.
+* `package.json` — Dependencies and project metadata.
 
 ---
 
