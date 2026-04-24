@@ -1,4 +1,4 @@
-# Laboratory Work #2: PhoneBook Web Application
+# Laboratory Work #3: PhoneBook Web Application
 
 ### Developer Information
 * **Name:** Shcherbatiuk Yevhen
