@@ -19,6 +19,25 @@ const app = createApp({
             errorMessage: ''
         };
     },
+    
+    computed: {
+        groupedContacts() {
+            const groups = {};
+            
+            const sorted = [...this.contacts].sort((a, b) => a.name.localeCompare(b.name));
+            
+            sorted.forEach(contact => {
+                const firstLetter = contact.name.charAt(0).toUpperCase();
+                if (!groups[firstLetter]) {
+                    groups[firstLetter] = [];
+                }
+                groups[firstLetter].push(contact);
+            });
+            
+            return groups;
+        }
+    },
+
     methods: {
         async fetchContacts() {
             if (!this.isLogged) return;

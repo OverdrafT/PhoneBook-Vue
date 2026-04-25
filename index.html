@@ -52,25 +52,37 @@
                                 <th class="text-end">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr v-for="c in contacts" :key="c.id">
-                                <td>
-                                    <div class="avatar-circle" :style="{backgroundColor: getAvatarColor(c.name)}">
-                                        {{ getInitials(c.name) }}
-                                    </div>
-                                </td>
-                                <td><strong>{{ c.name }}</strong></td>
-                                <td class="text-muted">{{ c.phone }}</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm text-primary me-2" @click="editContact(c)">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-sm text-danger" @click="deleteContact(c.id)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <tbody v-for="(group, letter) in groupedContacts" :key="letter">
+                                <tr class="table-light">
+                                    <td colspan="4" class="fw-bold text-primary py-2 px-3">
+                                        {{ letter }}
+                                    </td>
+                                </tr>
+                                
+                                <tr v-for="contact in group" :key="contact.id" class="align-middle">
+                                    <tr v-for="contact in group" :key="contact.id" class="align-middle">
+                                        <td>
+                                            <div class="avatar-circle shadow-sm" :style="{ backgroundColor: getAvatarColor(contact.name) }">
+                                                {{ getInitials(contact.name) }}
+                                            </div>
+                                        </td>
+                                        
+                                        <td class="fw-medium">{{ contact.name }}</td>
+                                        
+                                        <td class="text-muted">{{ contact.phone }}</td>
+                                        
+                                        <td class="text-end"> <div class="btn-group">
+                                                <button class="btn btn-outline-primary btn-sm border-0" @click="editContact(contact)">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger btn-sm border-0" @click="deleteContact(contact.id)">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </tbody>
                     </table>
                 </div>
 
@@ -81,34 +93,35 @@
             </div>
         </main>
 
-        <div class="modal fade" id="addContactModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0 shadow-lg">
-                    <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title fw-bold">New Contact</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body p-4">
-                        <form @submit.prevent="saveContact">
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">Full Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
-                                    <input type="text" v-model="newContact.name" class="form-control" placeholder="John Doe" required>
-                                </div>
+    <div class="modal fade" id="addContactModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold">
+                        {{ newContact.id ? 'Edit Contact' : 'Add New Contact' }}
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form @submit.prevent="saveContact">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Full Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                                <input type="text" v-model="newContact.name" class="form-control" placeholder="Enter name" required>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">Phone Number</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light"><i class="bi bi-phone"></i></span>
-                                    <input type="tel" v-model="newContact.phone" class="form-control" placeholder="+380..." required>
-                                </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-telephone"></i></span>
+                                <input type="tel" v-model="newContact.phone" class="form-control" placeholder="+380..." required>
                             </div>
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-primary py-2 fw-bold">Save Contact</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                            {{ newContact.id ? 'Save Changes' : 'Create Contact' }}
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
