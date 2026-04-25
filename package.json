@@ -1,10 +1,11 @@
 {
   "name": "phonebook.vue",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "* **Name:** Shcherbatiuk Yevhen\r * **Group:** KV-33\r * **Institution:** Igor Sikorsky Kyiv Polytechnic Institute (KPI)\r * **Course:** Web Design & Front-end Development",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
