@@ -69,4 +69,4 @@ The repository has been optimized to separate client-side and server-side logic:
 
    ---
 
-   Report: [Google Docs]([https://docs.google.com/document/d/1hclSB-8W1cqrtn-H-WY6Rx7wAtG-2Zy-/edit?usp=sharing&ouid=113956265273490753946&rtpof=true&sd=true](https://docs.google.com/document/d/1hclSB-8W1cqrtn-H-WY6Rx7wAtG-2Zy-/edit?usp=sharing&ouid=113956265273490753946&rtpof=true&sd=true))
+   Report: [Google Docs](https://docs.google.com/document/d/1hclSB-8W1cqrtn-H-WY6Rx7wAtG-2Zy-/edit?usp=sharing&ouid=113956265273490753946&rtpof=true&sd=true](https://docs.google.com/document/d/1hclSB-8W1cqrtn-H-WY6Rx7wAtG-2Zy-/edit?usp=sharing&ouid=113956265273490753946&rtpof=true&sd=true))
